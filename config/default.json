@@ -1,0 +1,89 @@
+{
+  "gemini": {
+    "apiKey": "AIzaSyA2cTV4aqplMa1tNKQq6CKVsEZ-cPYKxdM",
+    "model": "gemini-2.5-pro",
+    "temperature": 0.2,
+    "maxOutputTokens": 8192
+  },
+  "templates": {
+    "default": "pocketflow",
+    "path": "../templates"
+  },
+  "output": {
+    "path": "../output",
+    "format": "markdown"
+  },
+  "instructions": {
+    "pocketflow": "Crée un document de design technique détaillé suivant la structure PocketFlow. Inclus des sections pour les objectifs, l'architecture, les flux de données, les diagrammes et le plan d'implémentation."
+  },
+  "models": {
+    "recommended": {
+      "designDoc": "gemini-2.5-pro",
+      "quickDraft": "gemini-2.5-flash",
+      "codeGeneration": "gemini-2.5-pro"
+    },
+    "available": [
+      {
+        "id": "gemini-2.5-pro",
+        "name": "Gemini 2.5 Pro",
+        "description": "Modèle avancé pour le raisonnement complexe et la génération de documents techniques détaillés",
+        "inputTypes": [
+          "texte",
+          "images",
+          "audio",
+          "vidéo"
+        ],
+        "bestFor": [
+          "Documents techniques",
+          "Architecture",
+          "Raisonnement approfondi"
+        ]
+      },
+      {
+        "id": "gemini-2.5-flash",
+        "name": "Gemini 2.5 Flash",
+        "description": "Modèle rapide et polyvalent pour la génération de contenu",
+        "inputTypes": [
+          "texte",
+          "images",
+          "audio",
+          "vidéo"
+        ],
+        "bestFor": [
+          "Génération rapide",
+          "Brouillons",
+          "Itérations multiples"
+        ]
+      },
+      {
+        "id": "gemini-2.0-flash",
+        "name": "Gemini 2.0 Flash",
+        "description": "Modèle de génération rapide avec fonctionnalités nouvelle génération",
+        "inputTypes": [
+          "texte",
+          "images",
+          "audio",
+          "vidéo"
+        ],
+        "bestFor": [
+          "Génération de contenu",
+          "Streaming en temps réel"
+        ]
+      },
+      {
+        "id": "gemini-1.5-pro",
+        "name": "Gemini 1.5 Pro (obsolète)",
+        "description": "Ancien modèle pour tâches de raisonnement complexes",
+        "inputTypes": [
+          "texte",
+          "images",
+          "audio",
+          "vidéo"
+        ],
+        "bestFor": [
+          "Compatibilité avec anciens systèmes"
+        ]
+      }
+    ]
+  }
+}

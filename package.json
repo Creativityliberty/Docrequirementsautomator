@@ -1,0 +1,33 @@
+{
+  "name": "design-doc-automator",
+  "version": "1.0.0",
+  "description": "Générateur automatique de documents de design basé sur PocketFlow et l'API Gemini",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "cd backend && npm run dev",
+    "start:frontend": "cd frontend && npm start",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "test": "concurrently \"cd backend && npm test\" \"cd frontend && npm test\"",
+    "dm:update": "node scripts/update-dm-log.js",
+    "dm:install-hooks": "node scripts/install-git-hooks.js",
+    "postinstall": "npm run dm:install-hooks"
+  },
+  "keywords": [
+    "design",
+    "documentation",
+    "generator",
+    "pocketflow",
+    "gemini",
+    "mcp"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+/**
+ * Script exécutable pour Design Document Automator
+ */
+
+const { cli } = require('../src/cli');
+
+// Exécuter l'interface en ligne de commande
+cli().catch(err => {
+  console.error('Fatal error:', err);
+  process.exit(1);
+});
