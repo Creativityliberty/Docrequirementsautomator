@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de Bord - Design Doc Automator</title>
+  <style>
+    :root {
+      --primary: #3498db;
+      --success: #2ecc71;
+      --warning: #f39c12;
+      --danger: #e74c3c;
+      --dark: #34495e;
+      --light: #ecf0f1;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      background-color: var(--dark);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 30px;
+      border-radius: 5px;
+    }
+    
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    
+    .card-header {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .metric {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    
+    .metric-name {
+      font-weight: 500;
+    }
+    
+    .progress-bar {
+      height: 10px;
+      background-color: #eee;
+      border-radius: 5px;
+      margin-top: 5px;
+      overflow: hidden;
+    }
+    
+    .progress-value {
+      height: 100%;
+      border-radius: 5px;
+    }
+    
+    .activity-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .activity-date {
+      font-size: 12px;
+      color: #777;
+    }
+    
+    .chart-container {
+      height: 300px;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 14px;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: bold;
+      color: white;
+    }
+    
+    .badge-success { background-color: var(--success); }
+    .badge-warning { background-color: var(--warning); }
+    .badge-danger { background-color: var(--danger); }
+    .badge-primary { background-color: var(--primary); }
+    
+    .progress-success { background-color: var(--success); }
+    .progress-warning { background-color: var(--warning); }
+    .progress-danger { background-color: var(--danger); }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Tableau de Bord - Design Doc Automator</h1>
+    <p>Dernière mise à jour: 21/07/2025 15:39:36</p>
+  </header>
+  
+  <div class="container">
+    <div class="dashboard-grid">
+      <!-- Métriques du Projet -->
+      <div class="card">
+        <div class="card-header">Métriques du Projet</div>
+        <div class="metric">
+          <span class="metric-name">Complétion Documentation</span>
+          <span>85%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-value progress-success" style="width: 85%"></div>
+        </div>
+        
+        <div class="metric">
+          <span class="metric-name">Avancement des Tâches</span>
+          <span>65%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-value progress-warning" style="width: 65%"></div>
+        </div>
+        
+        <div class="metric">
+          <span class="metric-name">Qualité Globale</span>
+          <span>7.8/10</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-value progress-success" style="width: 78%"></div>
+        </div>
+      </div>
+      
+      <!-- Progression des Tâches -->
+      <div class="card">
+        <div class="card-header">Progression des Tâches</div>
+        <div class="chart-container">
+          <canvas id="taskChart"></canvas>
+        </div>
+      </div>
+      
+      <!-- Qualité des Documents -->
+      <div class="card">
+        <div class="card-header">Qualité des Documents</div>
+        
+          <div class="metric">
+            <span class="metric-name">Requirements</span>
+            <span class="badge badge-success">8.5/10</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-value progress-success" style="width: 85%"></div>
+          </div>
+        
+          <div class="metric">
+            <span class="metric-name">Design</span>
+            <span class="badge badge-success">7.8/10</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-value progress-success" style="width: 78%"></div>
+          </div>
+        
+          <div class="metric">
+            <span class="metric-name">Tasks</span>
+            <span class="badge badge-success">9.2/10</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-value progress-success" style="width: 92%"></div>
+          </div>
+        
+          <div class="metric">
+            <span class="metric-name">DM-Log</span>
+            <span class="badge badge-warning">6.5/10</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-value progress-warning" style="width: 65%"></div>
+          </div>
+        
+      </div>
+      
+      <!-- Activité Récente -->
+      <div class="card">
+        <div class="card-header">Activité Récente</div>
+        
+          <div class="activity-item">
+            <div>Revue Automatique de Documentation</div>
+            <div class="activity-date">2025-07-21</div>
+          </div>
+        
+          <div class="activity-item">
+            <div>Création des documents de conception</div>
+            <div class="activity-date">2023-06-15</div>
+          </div>
+        
+          <div class="activity-item">
+            <div>Améliorations initiales</div>
+            <div class="activity-date">2023-06-15</div>
+          </div>
+        
+          <div class="activity-item">
+            <div>Audit initial de la structure du projet</div>
+            <div class="activity-date">2023-06-15</div>
+          </div>
+        
+      </div>
+    </div>
+    
+    <!-- Graphique d'évolution -->
+    <div class="card">
+      <div class="card-header">Évolution du Projet</div>
+      <div class="chart-container">
+        <canvas id="progressChart"></canvas>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <p>Généré automatiquement par Design Doc Automator</p>
+    <p><a href="https://github.com/Creativityliberty/Docrequirementsautomator" target="_blank">GitHub Repository</a></p>
+  </footer>
+  
+  <script>
+    // Données pour les graphiques
+    const taskData = {
+      labels: ['Terminées', 'En cours', 'À faire'],
+      datasets: [{
+        data: [0, 0, 50],
+        backgroundColor: ['#2ecc71', '#f39c12', '#e74c3c'],
+        hoverOffset: 4
+      }]
+    };
+    
+    const progressData = {
+      labels: ['J-30', 'J-25', 'J-20', 'J-15', 'J-10', 'J-5', 'Aujourd'hui'],
+      datasets: [
+        {
+          label: 'Documentation',
+          data: [20, 35, 45, 60, 70, 80, 85],
+          borderColor: '#3498db',
+          tension: 0.1,
+          fill: false
+        },
+        {
+          label: 'Tâches',
+          data: [10, 25, 30, 45, 55, 65, 65],
+          borderColor: '#2ecc71',
+          tension: 0.1,
+          fill: false
+        },
+        {
+          label: 'Qualité',
+          data: [50, 55, 60, 65, 70, 75, 78],
+          borderColor: '#f39c12',
+          tension: 0.1,
+          fill: false
+        }
+      ]
+    };
+    
+    // Initialisation des graphiques
+    window.onload = function() {
+      const taskCtx = document.getElementById('taskChart').getContext('2d');
+      new Chart(taskCtx, {
+        type: 'doughnut',
+        data: taskData,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false
+        }
+      });
+      
+      const progressCtx = document.getElementById('progressChart').getContext('2d');
+      new Chart(progressCtx, {
+        type: 'line',
+        data: progressData,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 100
+            }
+          }
+        }
+      });
+    };
+    
+    function getProgressClass(value) {
+      if (value >= 75) return 'progress-success';
+      if (value >= 50) return 'progress-warning';
+      return 'progress-danger';
+    }
+    
+    function getBadgeClass(value) {
+      if (value >= 7.5) return 'success';
+      if (value >= 5) return 'warning';
+      return 'danger';
+    }
+  </script>
+</body>
+</html>
+  

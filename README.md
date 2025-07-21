@@ -1,5 +1,25 @@
 # Design Doc Automator - Interface Web
 
+
+## Statut du Projet
+
+![Documentation](https://img.shields.io/badge/Documentation-100%25-brightgreen)
+![Tâches](https://img.shields.io/badge/Tâches-0%25-red)
+![Qualité du Code](https://img.shields.io/badge/Qualité-7%2F10-yellowgreen)
+![Dernière Mise à Jour](https://img.shields.io/badge/Dernière%20Mise%20à%20Jour-2025-07-21-blue)
+
+### Métriques de Documentation
+- **Exigences**: 100% complet
+- **Conception**: 100% complet
+- **Tâches**: 100% complet
+- **Journal DM**: 3 entrées
+
+### Progression des Tâches
+- **Terminées**: 0 tâches
+- **En cours**: 0 tâches
+- **À faire**: 50 tâches
+- **Total**: 50 tâches
+
 Une interface web moderne pour générer des documents de design basés sur le framework PocketFlow et l'API Gemini.
 
 ## 🚀 Fonctionnalités

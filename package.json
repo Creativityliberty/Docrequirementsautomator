@@ -10,9 +10,21 @@
     "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
     "build": "cd frontend && npm run build",
     "test": "concurrently \"cd backend && npm test\" \"cd frontend && npm test\"",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "dm:update": "node scripts/update-dm-log.js",
     "dm:install-hooks": "node scripts/install-git-hooks.js",
-    "postinstall": "npm run dm:install-hooks"
+    "postinstall": "npm run dm:install-hooks",
+    "badges:update": "node scripts/update-badges.js",
+    "docs:review": "node scripts/doc-review.js",
+    "dashboard:generate": "node scripts/generate-dashboard.js",
+    "project:status": "npm run badges:update && npm run docs:review && npm run dashboard:generate",
+    "docs:update": "node scripts/update-docs.js",
+    "docs:update:dm-log": "node scripts/update-docs.js --type dm-log",
+    "docs:update:mcd": "node scripts/update-docs.js --type mcd",
+    "docs:update:structure": "node scripts/update-docs.js --type structure",
+    "docs:update:full": "node scripts/update-docs.js --type full"
   },
   "keywords": [
     "design",
@@ -28,6 +40,13 @@
     "@google/generative-ai": "^0.2.0"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "@typescript-eslint/eslint-plugin": "^8.37.0",
+    "@typescript-eslint/parser": "^8.37.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^9.31.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
+    "prettier": "^3.6.2",
+    "typescript": "^5.8.3"
   }
 }

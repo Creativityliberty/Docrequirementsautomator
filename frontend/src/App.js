@@ -18,23 +18,31 @@ import HistoryPage from './pages/HistoryPage';
 import SettingsPage from './pages/SettingsPage';
 import NotFoundPage from './pages/NotFoundPage';
 
-// Thème de l'application
+// Composant de démonstration du système de layout
+import LayoutDemo from './components/LayoutDemo';
+
+// Système de design personnalisé
+import customTheme from './theme';
+
+// Création du thème Material-UI à partir de notre système de design
 const theme = createTheme({
-  palette: {
-    mode: 'light',
-    primary: {
-      main: '#1976d2',
+  ...customTheme.mui,
+  components: {
+    // Personnalisation des composants Material-UI
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+        },
+      },
     },
-    secondary: {
-      main: '#dc004e',
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          overflow: 'hidden',
+        },
+      },
     },
-  },
-  typography: {
-    fontFamily: [
-      'Roboto',
-      'Arial',
-      'sans-serif',
-    ].join(','),
   },
 });
 
@@ -46,21 +54,30 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <Header />
-        <Container component="main" sx={{ mt: 4, mb: 4, minHeight: 'calc(100vh - 160px)' }}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/generate" element={<GeneratePage />} />
-            <Route path="/preview/:id" element={<PreviewPage />} />
-            <Route path="/templates" element={<TemplatesPage />} />
-            <Route path="/templates/:name" element={<TemplateEditorPage />} />
-            <Route path="/templates/new" element={<TemplateEditorPage />} />
-            <Route path="/history" element={<HistoryPage />} />
-            <Route path="/settings" element={<SettingsPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Container>
-        <Footer />
+        <Routes>
+          {/* Route pour la démonstration du système de layout */}
+          <Route path="/layout-demo" element={<LayoutDemo />} />
+          
+          {/* Routes standard avec Header, Footer et Container */}
+          <Route path="*" element={
+            <>
+              <Header />
+              <Container component="main" sx={{ mt: 4, mb: 4, minHeight: 'calc(100vh - 160px)' }}>
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/generate" element={<GeneratePage />} />
+                  <Route path="/preview" element={<PreviewPage />} />
+                  <Route path="/templates" element={<TemplatesPage />} />
+                  <Route path="/templates/edit/:id" element={<TemplateEditorPage />} />
+                  <Route path="/history" element={<HistoryPage />} />
+                  <Route path="/settings" element={<SettingsPage />} />
+                  <Route path="*" element={<NotFoundPage />} />
+                </Routes>
+              </Container>
+              <Footer />
+            </>
+          } />
+        </Routes>
       </Router>
     </ThemeProvider>
   );
