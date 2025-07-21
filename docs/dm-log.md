@@ -11,6 +11,80 @@ Ce document sert à suivre les résultats des étapes, les suggestions d'amélio
 
 ## Résultats des étapes
 
+Error: Client error '401 Unauthorized' for url 'https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+### 2025-07-21 - Implémentation du système de design et du layout responsive
+
+**Tâches accomplies :**
+
+- Configuration de TypeScript, ESLint et Prettier (tâche 1.1)
+- Implémentation du système de design de base (tâche 1.2)
+  - Création de la palette de couleurs, typographie et variables d'espacement
+  - Développement des composants de base (Button, TextField, Card)
+  - Création des utilitaires d'animation et de transition
+- Mise en place du système de layout responsive (tâche 1.3)
+  - Implémentation d'un système de grille responsive (Container, Row, Col)
+  - Création des composants de layout (Sidebar, Header, ContentArea)
+  - Intégration des breakpoints responsive et media queries
+
+**Résultats :**
+
+- Système de design complet et cohérent implémenté
+- Composants de base réutilisables créés
+- Système de layout responsive fonctionnel
+- Composant de démonstration (LayoutDemo) créé et accessible via la route `/layout-demo`
+- Documentation du système de design créée (docs/design-system.md)
+
+**Prochaines étapes :**
+ 
+  - Implémenter la navigation et le routing (tâche 1.4)
+  - Créer les modèles de données et interfaces (tâche 2.1)
+
+### 2025-07-21 - Revue Automatique de Documentation
+
+**Tâches accomplies :**
+- Revue Automatique de Documentation
+
+**Résultats :**
+- Revue de documentation effectuée. 2 avertissements et 0 erreurs détectés.
+
+**Prochaines étapes :**
+- Corriger les problèmes identifiés
+
+### 2025-07-21 - Implémentation du système PocketFlow pour l'automatisation des documents
+
+**Tâches accomplies :**
+
+- Création du système d'orchestration PocketFlow (`pocketflow_agent`) avec:
+  - Classe de base `BaseNode` pour les nodes
+  - Client LLM `LLMClient` pour interagir avec l'API Gemini
+  - Classe `Flow` pour orchestrer l'exécution séquentielle des nodes avec dashboard ASCII
+- Développement des nodes pour:
+  - Mise à jour du DM-Log (`dm_log_nodes.py`)
+  - Mise à jour des documents (`doc_update_nodes.py`)
+- Intégration avec npm via des scripts de commande
+- Création de tests unitaires pour le système PocketFlow
+- Configuration du workflow GitHub Actions pour la validation de la documentation
+
+**Résultats :**
+
+- Système complet d'automatisation de la documentation via PocketFlow et Gemini
+- Dashboard ASCII pour afficher l'état du flow et la progression
+- Commandes npm pour exécuter différents types de mises à jour:
+  - `npm run docs:update:full`: Mise à jour complète de tous les documents
+  - `npm run docs:update:dm-log`: Mise à jour du DM-Log uniquement
+  - `npm run docs:update:mcd`: Mise à jour du MCD uniquement
+  - `npm run docs:update:structure`: Mise à jour de la structure du projet uniquement
+
+**Prochaines étapes :**
+
+- Ajouter des tests d'intégration pour le flow complet
+- Améliorer les modèles de requête LLM pour une meilleure génération de contenu
+- Intégrer des métriques de qualité de documentation
+- Mettre à jour la documentation
+
+
 ### 2023-06-15 - Création des documents de conception
 
 **Tâches accomplies :**
